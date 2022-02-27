@@ -1,11 +1,24 @@
 import React from "react";
-import { Button, Center, Pressable, Spacer, Text, VStack } from "native-base";
+import {
+  Button,
+  Center,
+  HStack,
+  Pressable,
+  Spacer,
+  Text,
+  VStack,
+} from "native-base";
 import LogoConnect from "../assets/icons/LogoConnect";
 import GoogleIcon from "../assets/icons/GoogleIcon";
+import { NavigationStackProp } from "react-navigation-stack";
 
-export const Login = ({ setIsLogged }: any) => {
+interface Props {
+  navigation: NavigationStackProp<{}>;
+}
+
+export const Login = ({ navigation }: Props) => {
   return (
-    <Center _light={{ bg: "blueGray.50" }} px={4} flex={1}>
+    <Center _light={{ bg: "white" }} px={4} flex={1}>
       <VStack mt={32}>
         <LogoConnect />
       </VStack>
@@ -27,21 +40,25 @@ export const Login = ({ setIsLogged }: any) => {
           </Text>
         </VStack>
 
-        <Button
-          onPress={() => setIsLogged(true)}
-          bg={"white"}
-          borderWidth={1}
-          borderColor={"blue.500"}
-          color={"white"}
-          fontWeight={"bold"}
-          fontSize={"md"}
-          mb={4}
-        >
-          <GoogleIcon />
-          <Text fontSize={"md"} color={"blue.500"}>
-            Entrar
-          </Text>
-        </Button>
+        <VStack w={"25%"}>
+          <Button
+            onPress={() => navigation.navigate("LoggedScreen")}
+            bg={"white"}
+            borderWidth={1}
+            borderColor={"blue.500"}
+            color={"white"}
+            fontWeight={"bold"}
+            fontSize={"md"}
+            mb={4}
+          >
+            <HStack alignItems={"center"}>
+              <GoogleIcon />
+              <Text fontSize={"md"} ml={2} color={"blue.500"}>
+                Entrar
+              </Text>
+            </HStack>
+          </Button>
+        </VStack>
       </Center>
 
       <Spacer />

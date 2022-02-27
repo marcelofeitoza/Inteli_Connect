@@ -4,8 +4,8 @@ import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
 function GoogleIcon(props: any) {
   return (
     <Svg
-      width={props.width ? props.width : 547}
-      height={props.width ? props.width : 547}
+      width={props.width ? props.width : 24}
+      height={props.width ? props.width : 24}
       viewBox="0 0 547 547"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

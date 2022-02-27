@@ -1,7 +1,12 @@
 import React from "react";
 import { Center, VStack, Text, View, Button } from "native-base";
+import { NavigationStackProp } from "react-navigation-stack";
 
-export const Profile = () => {
+interface Props {
+  navigation: NavigationStackProp<{}>;
+}
+
+export const Profile = ({ navigation }: Props) => {
   return (
     <Center
       _dark={{ bg: "blueGray.900" }}
@@ -11,7 +16,7 @@ export const Profile = () => {
     >
       <VStack space={5} alignItems="center">
         <Text>Profile</Text>
-        <Button onPress={() =>console.log('123')}>
+        <Button onPress={() => navigation.navigate("Login")}>
           <Text>Logout</Text>
         </Button>
       </VStack>

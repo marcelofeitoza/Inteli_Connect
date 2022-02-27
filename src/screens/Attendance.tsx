@@ -1,9 +1,12 @@
 import React from "react";
 import { Center, VStack, Text, View } from "native-base";
+import { NavigationStackProp } from "react-navigation-stack";
 
- 
+interface Props {
+  navigation: NavigationStackProp<{}>;
+}
 
-export const Attendance = () => {
+export const Attendance = ({ navigation }: Props) => {
   return (
     <Center
       _dark={{ bg: "blueGray.900" }}

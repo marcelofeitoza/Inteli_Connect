@@ -5,7 +5,7 @@ function LogoConnect(props: any) {
   return (
     <Svg
       width={props.width ? props.width : 251}
-      height={props.height ? props.height : 36}
+      height={props.width ? props.width*36/251 : 36}
       viewBox="0 0 251 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

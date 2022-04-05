@@ -14,11 +14,11 @@ const config = {
 export const theme = extendTheme({ config });
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Router />
+      <Router isLogged={isLogged} />
     </NativeBaseProvider>
   );
 }

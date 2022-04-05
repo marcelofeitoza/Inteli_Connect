@@ -13,14 +13,42 @@ import { Profile } from "./screens/Profile";
 import { Tools } from "./screens/Tools";
 import { Home } from "./screens/Home";
 
+import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  Nunito_200ExtraLight,
+  Nunito_400Regular,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+  Nunito_900Black,
+} from "@expo-google-fonts/nunito";
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export const Router = () => {
+interface Props {
+  isLogged: boolean;
+}
+
+export const Router = ({ isLogged }: Props) => {
+  let [fontsLoaded] = useFonts({
+    Nunito_200ExtraLight,
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    Nunito_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="LoggedScreen"
+        initialRouteName={isLogged ? "LoggedScreen" : "Login"}
         screenOptions={{
           headerShown: false,
         }}
@@ -33,6 +61,19 @@ export const Router = () => {
 };
 
 export const BottomTabRouter = () => {
+  let [fontsLoaded] = useFonts({
+    Nunito_200ExtraLight,
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    Nunito_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -41,6 +82,11 @@ export const BottomTabRouter = () => {
         tabBarHideOnKeyboard: true,
         tabBarStyle: { height: 60 },
         tabBarItemStyle: { marginVertical: 5 },
+        tabBarActiveTintColor: "#8c76db",
+        tabBarLabelStyle: {
+          fontFamily: "Nunito_600SemiBold",
+          fontSize: 12,
+        },
       }}
     >
       <Tab.Screen
